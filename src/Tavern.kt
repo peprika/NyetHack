@@ -15,4 +15,7 @@ private fun placeOrder(menuData: String) {
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
     val message = "Madrigal buys a $drinkName ($drinkType) for $drinkPrice."
     println(message)
+
+    val phrase = "Ah, delicious $drinkName!"
+    println("Madrigal exclaims: $phrase")
 }
