@@ -1,6 +1,7 @@
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
+const val TAVERN_NAME = "Taernyl's Folly"
 
 fun main(args: Array<String>) {
     println("What would you like to drink?")
