@@ -12,8 +12,8 @@ var playerGold = 10
 var playerSilver = 10
 
 // BEER CASK
-val caskVolume = 5.00
-val pintVolume = 0.125
+const val caskVolume = 5.00
+const val pintVolume = 0.125
 var numOfPintsLeft = caskVolume / pintVolume
 var pintsSold = 0
 
