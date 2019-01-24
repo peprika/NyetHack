@@ -7,6 +7,17 @@ fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
 }
 
+private fun toDragonSpeak(phrase: String) =
+    phrase.replace(Regex("[aeiou]")) {
+        when (it.value) {
+            "a" -> "4"
+            "e" -> "3"
+            "i" -> "1"
+            "o" -> "0"
+            "u" -> "|_|"
+            else -> it.value
+        }
+    }
 private fun placeOrder(menuData: String) {
     val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
     val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
@@ -17,5 +28,5 @@ private fun placeOrder(menuData: String) {
     println(message)
 
     val phrase = "Ah, delicious $drinkName!"
-    println("Madrigal exclaims: $phrase")
+    println("Madrigal exclaims: ${toDragonSpeak(phrase)}")
 }
