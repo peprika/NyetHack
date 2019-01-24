@@ -27,6 +27,10 @@ private fun placeOrder(menuData: String) {
     val message = "Madrigal buys a $drinkName ($drinkType) for $drinkPrice."
     println(message)
 
-    val phrase = "Ah, delicious $drinkName!"
-    println("Madrigal exclaims: ${toDragonSpeak(phrase)}")
+    val phrase = if (drinkName == "Dragon's Breath") {
+        "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}"
+        } else {
+        "Madrigal says: Thanks for the $drinkName."
+    }
+    println(phrase)
 }
