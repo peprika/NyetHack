@@ -4,12 +4,19 @@
 import kotlin.math.roundToInt
 const val TAVERN_NAME = "Taernyl's Folly"
 
-var playerGold = 10
+var playerGold = 100
 var playerSilver = 10
 // 1 Gold = 100 silver
 
+val caskVolume = 5.00
+val pintVolume = 0.125
+var numOfPintsLeft = caskVolume / pintVolume
+var pintsSold = 0
+
 fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
+    repeat(12) { placeOrder("beer,pint,2.50")
+    }
 }
 
 fun performPurchase(drinkPrice: Double) {
@@ -54,6 +61,15 @@ private fun placeOrder(menuData: String) {
     println("Madrigal speaks with $tavernMaster about their order")
 
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
+
+    if (drinkType == "beer") {
+        numOfPintsLeft = numOfPintsLeft - 1
+        pintsSold++
+        if (pintsSold == 12) {
+            println("12 pints sold, there's still ${numOfPintsLeft.roundToInt()} pints left to sell!")
+        }
+    }
+
     val message = "Madrigal buys a $drinkName ($drinkType) for $drinkPrice."
     println(message)
 
