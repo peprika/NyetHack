@@ -2,22 +2,27 @@
 // Thanks to the Big Nerd Ranch!
 
 import kotlin.math.roundToInt
+import kotlin.system.exitProcess
+
+// TAVERN NAME
 const val TAVERN_NAME = "Taernyl's Folly"
 
-var playerGold = 100
+// PLAYER MONEY: 1 Gold = 100 silver
+var playerGold = 10
 var playerSilver = 10
-// 1 Gold = 100 silver
 
+// BEER CASK
 val caskVolume = 5.00
 val pintVolume = 0.125
 var numOfPintsLeft = caskVolume / pintVolume
 var pintsSold = 0
 
+var purchaseFailed = false
+
 fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
-    repeat(12) { placeOrder("beer,pint,2.50")
-    }
-}
+    repeat (12) {placeOrder("beer,pint,2.50")
+}}
 
 fun performPurchase(drinkPrice: Double) {
     displayBalance()
@@ -25,14 +30,19 @@ fun performPurchase(drinkPrice: Double) {
     println("Total purse: $totalPurse")
     println("Purchasing item for $drinkPrice")
 
-    val remainingBalance = totalPurse - drinkPrice
-    println("Remaining balance: ${"%.2f".format(remainingBalance)}")
+    if (totalPurse < drinkPrice) {
+        purchaseFailed = true
+        println("You don't have enough money to buy that!")
+    } else {
+        val remainingBalance = totalPurse - drinkPrice
+        println("Remaining balance: ${"%.2f".format(remainingBalance)}")
 
-    val remainingGold = remainingBalance.toInt()
-    val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
-    playerGold = remainingGold
-    playerSilver = remainingSilver
-    displayBalance()
+        val remainingGold = remainingBalance.toInt()
+        val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
+        playerGold = remainingGold
+        playerSilver = remainingSilver
+        displayBalance()
+    }
 }
 
 private fun displayBalance()  {
@@ -75,10 +85,15 @@ private fun placeOrder(menuData: String) {
 
     performPurchase(drinkPrice.toDouble())
 
-    val phrase = if (drinkName == "Dragon's Breath") {
-        "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}"
+    val phrase = if (purchaseFailed == false) {
+        if (drinkName == "Dragon's Breath") {
+            "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}"
         } else {
-        "Madrigal says: Thanks for the $drinkName."
+            "Madrigal says: Thanks for the $drinkName."
+        }
+    } else {
+        "Madrigal says: Thanks for nothing!"
+        exitProcess(0)
     }
     println(phrase)
 }
