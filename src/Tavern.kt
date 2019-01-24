@@ -12,10 +12,7 @@ private fun placeOrder(menuData: String) {
     val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
     println("Madrigal speaks with $tavernMaster about their order")
 
-    val data = menuData.split(',')
-    val drinkType = data[0]
-    val drinkName = data[1]
-    val drinkPrice = data[2]
+    val (drinkType, drinkName, drinkPrice) = menuData.split(',')
     val message = "Madrigal buys a $drinkName ($drinkType) for $drinkPrice."
     println(message)
 }
