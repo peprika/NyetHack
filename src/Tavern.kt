@@ -10,6 +10,14 @@ fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
 }
 
+fun performPurchase() {
+    displayBalance()
+}
+
+private fun displayBalance()  {
+    println("Player's purse balance: Gold $playerGold, Silver: $playerSilver")
+}
+
 private fun toDragonSpeak(phrase: String) =
     phrase.replace(Regex("[aeiouAEIOU]")) {
         when (it.value) {
@@ -34,6 +42,8 @@ private fun placeOrder(menuData: String) {
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
     val message = "Madrigal buys a $drinkName ($drinkType) for $drinkPrice."
     println(message)
+
+    performPurchase()
 
     val phrase = if (drinkName == "Dragon's Breath") {
         "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}"
