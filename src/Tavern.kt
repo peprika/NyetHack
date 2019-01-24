@@ -92,7 +92,7 @@ private fun placeOrder(menuData: String) {
             "Madrigal says: Thanks for the $drinkName."
         }
     } else {
-        "Madrigal says: Thanks for nothing!"
+        println("Madrigal says: Thanks for nothing!")
         exitProcess(0)
     }
     println(phrase)
