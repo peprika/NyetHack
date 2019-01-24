@@ -27,15 +27,13 @@ fun main(args: Array<String>) {
 fun performPurchase(drinkPrice: Double) {
     displayBalance()
     val totalPurse = playerGold + (playerSilver / 100.0)
-    println("Total purse: $totalPurse")
-    println("Purchasing item for $drinkPrice")
+    println("Purchasing item for ${drinkPrice.toInt()} gold and ${(drinkPrice % 1 * 100).roundToInt()} silver")
 
     if (totalPurse < drinkPrice) {
         purchaseFailed = true
         println("You don't have enough money to buy that!")
     } else {
         val remainingBalance = totalPurse - drinkPrice
-        println("Remaining balance: ${"%.2f".format(remainingBalance)}")
 
         val remainingGold = remainingBalance.toInt()
         val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
@@ -46,7 +44,7 @@ fun performPurchase(drinkPrice: Double) {
 }
 
 private fun displayBalance()  {
-    println("Player's purse balance: Gold $playerGold, Silver: $playerSilver")
+    println("Player's purse balance: $playerGold gold, $playerSilver silver")
 }
 
 private fun toDragonSpeak(phrase: String) =
@@ -87,9 +85,9 @@ private fun placeOrder(menuData: String) {
 
     val phrase = if (!purchaseFailed) {
         if (drinkName == "Dragon's Breath") {
-            "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}"
+            "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
         } else {
-            "Madrigal says: Thanks for the $drinkName."
+            "Madrigal says: Thanks for the $drinkName.\n"
         }
     } else {
         println("Madrigal says: Thanks for nothing!")
