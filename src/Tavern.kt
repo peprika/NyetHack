@@ -4,7 +4,7 @@
 const val TAVERN_NAME = "Taernyl's Folly"
 
 fun main(args: Array<String>) {
-    placeOrder("shandy,Dragon's Breath,5.91!")
+    placeOrder("shandy,Dragon's Breath,5.91")
 }
 
 private fun placeOrder(menuData: String) {
