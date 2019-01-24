@@ -3,6 +3,9 @@
 
 const val TAVERN_NAME = "Taernyl's Folly"
 
+var playerGold = 10
+var playerSilver = 10
+
 fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
 }
