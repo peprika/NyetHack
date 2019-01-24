@@ -5,6 +5,7 @@ const val TAVERN_NAME = "Taernyl's Folly"
 
 var playerGold = 10
 var playerSilver = 10
+// 1 Gold = 100 silver
 
 fun main(args: Array<String>) {
     placeOrder("shandy,Dragon's Breath,5.91")
@@ -12,7 +13,12 @@ fun main(args: Array<String>) {
 
 fun performPurchase(drinkPrice: Double) {
     displayBalance()
+    val totalPurse = playerGold + (playerSilver / 100.0)
+    println("Total purse: $totalPurse")
     println("Purchasing item for $drinkPrice")
+
+    val remainingBalance = totalPurse - drinkPrice
+    println("Remaining balance: ${"%.2f".format(remainingBalance)}")
 }
 
 private fun displayBalance()  {
