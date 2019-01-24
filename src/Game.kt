@@ -1,5 +1,5 @@
 // Riku Pepponen
-// Thanks to the Big Nerd Farm!
+// Thanks to the Big Nerd Ranch!
 
 
 fun main(args: Array<String>) {
