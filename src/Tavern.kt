@@ -4,8 +4,9 @@
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess
 
-// TAVERN NAME
+// TAVERN INFO
 const val TAVERN_NAME = "Taernyl's Folly"
+val patronList: List<String> = listOf("Eli", "Mordoc", "Sophie")
 
 // PLAYER MONEY: 1 Gold = 100 silver
 var playerGold = 10
