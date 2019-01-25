@@ -29,6 +29,12 @@ fun main(args: Array<String>) {
         println("Tavern master ${tavernMaster} says: Eli isn't here.")
     }
 
+    if (patronList.containsAll(listOf("Sophie", "Mordoc"))) {
+        println("$tavernMaster says: The rest are seated by the stew kettle.")
+        } else {
+        println("$tavernMaster says: The others departed hours ago.")
+    }
+
     placeOrder("shandy,Dragon's Breath,5.91")
     repeat (12) {placeOrder("beer,pint,2.50")
 }}
