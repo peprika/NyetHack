@@ -8,7 +8,7 @@ import kotlin.system.exitProcess
 const val TAVERN_NAME = "Taernyl's Folly"
 val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
 val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
-val patronList: List<String> = listOf("Eli", "Mordoc", "Sophie")
+val patronList: List<String> = mutableListOf("Eli", "Mordoc", "Sophie")
 
 // PLAYER MONEY: 1 Gold = 100 silver
 var playerGold = 10
@@ -36,8 +36,7 @@ fun main(args: Array<String>) {
     }
 
     placeOrder("shandy,Dragon's Breath,5.91")
-    repeat (12) {placeOrder("beer,pint,2.50")
-}}
+}
 
 fun performPurchase(drinkPrice: Double) {
     displayBalance()
