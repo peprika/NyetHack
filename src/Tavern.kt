@@ -21,6 +21,12 @@ var pintsSold = 0
 var purchaseFailed = false
 
 fun main(args: Array<String>) {
+    if (patronList.contains("Eli")) {
+        println("The tavern master says: Eli's in the back playing cards.")
+    } else {
+        println("The tavern master says: Eli isn't here.")
+    }
+
     placeOrder("shandy,Dragon's Breath,5.91")
     repeat (12) {placeOrder("beer,pint,2.50")
 }}
