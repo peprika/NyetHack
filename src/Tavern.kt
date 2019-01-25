@@ -6,6 +6,8 @@ import kotlin.system.exitProcess
 
 // TAVERN INFO
 const val TAVERN_NAME = "Taernyl's Folly"
+val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
+val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
 val patronList: List<String> = listOf("Eli", "Mordoc", "Sophie")
 
 // PLAYER MONEY: 1 Gold = 100 silver
@@ -22,9 +24,9 @@ var purchaseFailed = false
 
 fun main(args: Array<String>) {
     if (patronList.contains("Eli")) {
-        println("The tavern master says: Eli's in the back playing cards.")
+        println("Tavern master ${tavernMaster} says: Eli's in the back playing cards.")
     } else {
-        println("The tavern master says: Eli isn't here.")
+        println("Tavern master ${tavernMaster} says: Eli isn't here.")
     }
 
     placeOrder("shandy,Dragon's Breath,5.91")
@@ -71,8 +73,7 @@ private fun toDragonSpeak(phrase: String) =
         }
     }
 private fun placeOrder(menuData: String) {
-    val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
-    val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
+
     println("Madrigal speaks with $tavernMaster about their order")
 
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
