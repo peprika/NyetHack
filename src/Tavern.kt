@@ -41,6 +41,10 @@ fun main(args: Array<String>) {
     patronList.add("Alex")
     patronList.add(0, "Alex")
     patronList[0] = "Mr. Alex"
+
+    patronList.forEach { patron ->
+        println("Good evening, $patron")
+    }
 }
 
 fun performPurchase(drinkPrice: Double) {
