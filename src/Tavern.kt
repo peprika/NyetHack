@@ -35,8 +35,6 @@ fun main(args: Array<String>) {
         println("$tavernMaster says: The others departed hours ago.")
     }
 
-    placeOrder("shandy,Dragon's Breath,5.91")
-
     patronList.remove("Eli")
     patronList.add("Alex")
     patronList.add(0, "Alex")
@@ -44,6 +42,7 @@ fun main(args: Array<String>) {
 
     patronList.forEachIndexed { index, patron ->
         println("Good evening, $patron - you're #${index + 1} in line.")
+        placeOrder(patron, "shandy,Dragon's Breath,5.91")
     }
 }
 
@@ -54,7 +53,7 @@ fun performPurchase(drinkPrice: Double) {
 
     if (totalPurse < drinkPrice) {
         purchaseFailed = true
-        println("You don't have enough money to buy that!")
+        println("Not enough money!")
     } else {
         val remainingBalance = totalPurse - drinkPrice
 
@@ -86,9 +85,9 @@ private fun toDragonSpeak(phrase: String) =
             else -> it.value
         }
     }
-private fun placeOrder(menuData: String) {
+private fun placeOrder(patronName: String, menuData: String) {
 
-    println("Madrigal speaks with $tavernMaster about their order")
+    println("$patronName speaks with $tavernMaster about their order.")
 
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
 
@@ -100,19 +99,19 @@ private fun placeOrder(menuData: String) {
         }
     }
 
-    val message = "Madrigal buys a $drinkName ($drinkType) for $drinkPrice."
+    val message = "$patronName buys a $drinkName ($drinkType) for $drinkPrice."
     println(message)
 
-    performPurchase(drinkPrice.toDouble())
+   // performPurchase(drinkPrice.toDouble())
 
     val phrase = if (!purchaseFailed) {
         if (drinkName == "Dragon's Breath") {
-            "Madrigal exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
+            "$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
         } else {
-            "Madrigal says: Thanks for the $drinkName.\n"
+            "$patronName says: Thanks for the $drinkName.\n"
         }
     } else {
-        println("Madrigal says: Thanks for nothing!")
+        println("$patronName says: Thanks for nothing!")
         exitProcess(0)
     }
     println(phrase)
