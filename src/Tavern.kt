@@ -1,6 +1,7 @@
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
+import java.io.File
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess
 
@@ -9,6 +10,9 @@ const val TAVERN_NAME = "Taernyl's Folly"
 val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
 val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
+val menuList = File("data/tavern-menu-items.txt")
+    .readText()
+    .split("\n")
 
 // PLAYER MONEY: 1 Gold = 100 silver
 var playerGold = 10
