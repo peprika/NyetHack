@@ -42,8 +42,8 @@ fun main(args: Array<String>) {
     patronList.add(0, "Alex")
     patronList[0] = "Mr. Alex"
 
-    patronList.forEach { patron ->
-        println("Good evening, $patron")
+    patronList.forEachIndexed { index, patron ->
+        println("Good evening, $patron - you're #${index + 1} in line.")
     }
 }
 
