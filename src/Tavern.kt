@@ -9,7 +9,7 @@ import kotlin.system.exitProcess
 const val TAVERN_NAME = "Taernyl's Folly"
 val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
 val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
-val welcomeMessage = "     *** Welcome to $TAVERN_NAME *** \n"
+const val welcomeMessage = "     *** Welcome to $TAVERN_NAME *** \n"
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot","Fernsworth","Baggins")
 val uniquePatrons = mutableSetOf<String>()
@@ -35,9 +35,9 @@ fun main(args: Array<String>) {
     displayMenu()
 
     if (patronList.contains("Eli")) {
-        println("Tavern master ${tavernMaster} says: Eli's in the back playing cards.")
+        println("Tavern master $tavernMaster says: Eli's in the back playing cards.")
     } else {
-        println("Tavern master ${tavernMaster} says: Eli isn't here.")
+        println("Tavern master $tavernMaster says: Eli isn't here.")
     }
 
     if (patronList.containsAll(listOf("Sophie", "Mordoc"))) {
@@ -139,10 +139,8 @@ private fun placeOrder(patronName: String, menuData: String) {
 private fun displayMenu() {
     menuList.forEachIndexed { index, data ->
         val (_, name, price) = data.split(',')
-
         val numberOfDots = welcomeMessage.length - name.length - price.length
         println("[${index+1}] " + name.capitalize() + ".".repeat(numberOfDots) + price)
     }
     print("\n")
-
 }
