@@ -19,6 +19,8 @@ val menuList = File("data/tavern-menu-items.txt")
 
 val patronGold = mutableMapOf<String, Double>()
 
+var purchaseFailed = false
+
 // BEER CASK
 const val caskVolume = 5.00
 const val pintVolume = 0.125
@@ -62,7 +64,7 @@ fun main(args: Array<String>) {
     displayPatronBalances()
 
     var orderCount = 0
-    while (orderCount <= 9) {
+    while (orderCount <= 5) {
         try {
             placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
             orderCount++
@@ -107,12 +109,13 @@ private fun placeOrder(patronName: String, menuData: String) {
     performPurchase(drinkPrice.toDouble(), patronName)
 
     if (patronGold.getValue(patronName) < drinkPrice.toDouble()) {
-        println("Get outta here, $patronName!")
+        purchaseFailed = true
+        println("Get outta here, $patronName!\n")
         uniquePatrons.remove(patronName)
         patronGold.remove(patronName)
     }
 
-    if (drinkType == "beer") {
+    if ((drinkType == "beer") and (!purchaseFailed)) {
         numOfPintsLeft--
         pintsSold++
         if (pintsSold == 12) {
@@ -120,13 +123,14 @@ private fun placeOrder(patronName: String, menuData: String) {
         }
     }
 
-
-    val phrase = if (drinkName == "Dragon's Breath") {
+    if (!purchaseFailed) {
+        val phrase = if (drinkName == "Dragon's Breath") {
             "$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
         } else {
             "$patronName says: Thanks for the $drinkName.\n"
         }
-    println(phrase)
+        println(phrase)
+    }
 }
 
 private fun displayPatronBalances() {
