@@ -19,10 +19,6 @@ val menuList = File("data/tavern-menu-items.txt")
 
 val patronGold = mutableMapOf<String, Double>()
 
-// PLAYER MONEY: 1 Gold = 100 silver
-var playerGold = 1000
-var playerSilver = 10
-
 // BEER CASK
 const val caskVolume = 5.00
 const val pintVolume = 0.125
@@ -71,27 +67,9 @@ fun main(args: Array<String>) {
 
 }
 
-fun performPurchase(drinkPrice: Double) {
-    displayBalance()
-    val totalPurse = playerGold + (playerSilver / 100.0)
-    println("Purchasing item for ${drinkPrice.toInt()} gold and ${(drinkPrice % 1 * 100).roundToInt()} silver")
-
-    if (totalPurse < drinkPrice) {
-        purchaseFailed = true
-        println("Not enough money!")
-    } else {
-        val remainingBalance = totalPurse - drinkPrice
-
-        val remainingGold = remainingBalance.toInt()
-        val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
-        playerGold = remainingGold
-        playerSilver = remainingSilver
-        displayBalance()
-    }
-}
-
-private fun displayBalance()  {
-    println("Player's purse balance: $playerGold gold, $playerSilver silver")
+fun performPurchase(price: Double, patronName: String) {
+    val totalPurse = patronGold.getValue(patronName)
+    patronGold[patronName] = totalPurse - price
 }
 
 private fun toDragonSpeak(phrase: String) =
@@ -126,7 +104,7 @@ private fun placeOrder(patronName: String, menuData: String) {
         }
     }
 
-   performPurchase(drinkPrice.toDouble())
+   performPurchase(drinkPrice.toDouble(), patronName)
 
     val phrase = if (!purchaseFailed) {
         if (drinkName == "Dragon's Breath") {
