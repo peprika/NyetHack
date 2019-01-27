@@ -63,8 +63,13 @@ fun main(args: Array<String>) {
 
     var orderCount = 0
     while (orderCount <= 9) {
-        placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
-        orderCount++
+        try {
+            placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
+            orderCount++
+        } catch (e: NoSuchElementException) {
+            println("Everyone got kicked out!")
+            exitProcess(0)
+        }
     }
 
     displayPatronBalances()
@@ -125,14 +130,11 @@ private fun placeOrder(patronName: String, menuData: String) {
 }
 
 private fun displayPatronBalances() {
-    if ((patronGold.isEmpty() and uniquePatrons.isEmpty()) == false)  {
     patronGold.forEach { patron, balance ->
         println("$patron, balance: ${"%.2f".format(balance)}")
-        }
-    } else {
-        println("Everyone got kicked out!")
     }
 }
+
 private fun displayMenu() {
     menuList.forEachIndexed { index, data ->
         val (_, name, price) = data.split(',')
