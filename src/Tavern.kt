@@ -25,7 +25,6 @@ const val pintVolume = 0.125
 var numOfPintsLeft = caskVolume / pintVolume
 var pintsSold = 0
 
-var purchaseFailed = false
 
 fun main(args: Array<String>) {
 
@@ -100,6 +99,10 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     println("$patronName buys a $drinkName ($drinkType) for $drinkPrice.")
 
+    if (patronGold.getValue(patronName) < drinkPrice.toDouble()) {
+        println("Get outta here!")
+    }
+
     if (drinkType == "beer") {
         numOfPintsLeft--
         pintsSold++
@@ -110,16 +113,11 @@ private fun placeOrder(patronName: String, menuData: String) {
 
    performPurchase(drinkPrice.toDouble(), patronName)
 
-    val phrase = if (!purchaseFailed) {
-        if (drinkName == "Dragon's Breath") {
+    val phrase = if (drinkName == "Dragon's Breath") {
             "$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
         } else {
             "$patronName says: Thanks for the $drinkName.\n"
         }
-    } else {
-        println("$patronName says: Thanks for nothing!")
-        exitProcess(0)
-    }
     println(phrase)
 }
 
