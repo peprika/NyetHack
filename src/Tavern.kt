@@ -79,7 +79,14 @@ fun main(args: Array<String>) {
 
 fun performPurchase(price: Double, patronName: String) {
     val totalPurse = patronGold.getValue(patronName)
-    patronGold[patronName] = totalPurse - price
+    if (totalPurse < price) {
+        purchaseFailed = true
+        println("Get outta here, $patronName!\n")
+        uniquePatrons.remove(patronName)
+        patronGold.remove(patronName)
+    } else {
+        patronGold[patronName] = totalPurse - price
+    }
 }
 
 private fun toDragonSpeak(phrase: String) =
@@ -104,16 +111,9 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
 
-    println("$patronName buys a $drinkName ($drinkType) for $drinkPrice.")
+    println("$patronName tries to buy $drinkName ($drinkType) for $drinkPrice.")
 
     performPurchase(drinkPrice.toDouble(), patronName)
-
-    if (patronGold.getValue(patronName) < drinkPrice.toDouble()) {
-        purchaseFailed = true
-        println("Get outta here, $patronName!\n")
-        uniquePatrons.remove(patronName)
-        patronGold.remove(patronName)
-    }
 
     if ((drinkType == "beer") and (!purchaseFailed)) {
         numOfPintsLeft--
@@ -137,6 +137,7 @@ private fun displayPatronBalances() {
     patronGold.forEach { patron, balance ->
         println("$patron, balance: ${"%.2f".format(balance)}")
     }
+    print("\n")
 }
 
 private fun displayMenu() {
