@@ -17,6 +17,8 @@ val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
 
+val patronGold = mapOf("Eli" to 10.5, "Mordoc" to 8.0, "Sophie" to 5.5)
+
 // PLAYER MONEY: 1 Gold = 100 silver
 var playerGold = 1000
 var playerSilver = 10
@@ -64,6 +66,8 @@ fun main(args: Array<String>) {
         placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
         orderCount++
     }
+
+    println(patronGold)
 }
 
 fun performPurchase(drinkPrice: Double) {
