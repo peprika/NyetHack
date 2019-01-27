@@ -11,6 +11,7 @@ val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
 val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot","Fernsworth","Baggins")
+val uniquePatrons = mutableSetOf<String>()
 val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
@@ -49,8 +50,9 @@ fun main(args: Array<String>) {
         val first = patronList.shuffled().first()
         val last = lastName.shuffled().first()
         val name = "$first $last"
-        println(name)
+        uniquePatrons += name
     }
+    println(uniquePatrons)
 }
 
 fun performPurchase(drinkPrice: Double) {
