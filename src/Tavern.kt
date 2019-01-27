@@ -65,6 +65,7 @@ fun main(args: Array<String>) {
         orderCount++
     }
 
+    displayPatronBalances()
 }
 
 fun performPurchase(price: Double, patronName: String) {
@@ -119,6 +120,11 @@ private fun placeOrder(patronName: String, menuData: String) {
     println(phrase)
 }
 
+private  fun displayPatronBalances() {
+    patronGold.forEach { patron, balance ->
+        println("$patron, balance: ${"%.2f".format(balance)}")
+    }
+}
 private fun displayMenu() {
     menuList.forEachIndexed { index, data ->
         val (_, name, price) = data.split(',')
