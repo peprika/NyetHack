@@ -10,6 +10,8 @@ fun main(args: Array<String>) {
     var isBlessed = true
     var isImmortal = false
 
+    val player = Player()
+
     // Aura
     val auraColor = auraColor(isBlessed, healthPoints, isImmortal)
 
