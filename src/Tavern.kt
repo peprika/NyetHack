@@ -44,6 +44,7 @@ fun main(args: Array<String>) {
         } else {
         println("$tavernMaster says: The others departed hours ago.")
     }
+    print("\n")
 
     patronList.remove("Eli")
     patronList.add("Alex")
@@ -112,10 +113,11 @@ private fun placeOrder(patronName: String, menuData: String) {
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
 
     println("$patronName tries to buy $drinkName ($drinkType) for $drinkPrice.")
+    println("$patronName has " + "%.2f".format(patronGold.getValue(patronName)) + " gold.")
 
     performPurchase(drinkPrice.toDouble(), patronName)
 
-    if ((drinkType == "beer") and (!purchaseFailed)) {
+    if ((drinkType == "beer") and (purchaseFailed == false)) {
         numOfPintsLeft--
         pintsSold++
         if (pintsSold == 12) {
@@ -123,13 +125,14 @@ private fun placeOrder(patronName: String, menuData: String) {
         }
     }
 
-    if (!purchaseFailed) {
+    if (purchaseFailed == false) {
         val phrase = if (drinkName == "Dragon's Breath") {
-            "$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
+            println("$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n")
         } else {
-            "$patronName says: Thanks for the $drinkName.\n"
+            println("$patronName says: Thanks for the $drinkName!")
         }
         println(phrase)
+        println("$patronName now has " + "%.2f".format(patronGold.getValue(patronName)) + " gold\n")
     }
 }
 

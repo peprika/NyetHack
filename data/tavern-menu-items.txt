@@ -1,4 +1,4 @@
-shandy,Dragons Breath,5.91,
+shandy,Dragon's Breath,5.91,
 beer,pint,2.50,
 elixir,shirley temple,4.12,
 meal,goblet of la croix,1.22,
