@@ -56,8 +56,11 @@ fun main(args: Array<String>) {
         uniquePatrons += name
     }
     uniquePatrons.forEach {
-        patronGold[it] = 6.0
+        val goldGenerator = (0..10).random().toDouble()
+        patronGold[it] = goldGenerator
     }
+
+    displayPatronBalances()
 
     var orderCount = 0
     while (orderCount <= 9) {
