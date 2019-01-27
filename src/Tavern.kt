@@ -15,7 +15,7 @@ val menuList = File("data/tavern-menu-items.txt")
     .split("\n")
 
 // PLAYER MONEY: 1 Gold = 100 silver
-var playerGold = 10
+var playerGold = 1000
 var playerSilver = 10
 
 // BEER CASK
@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
 
     patronList.forEachIndexed { index, patron ->
         println("Good evening, $patron - you're #${index + 1} in line.")
-        placeOrder(patron, "shandy,Dragon's Breath,5.91")
+        repeat(3) { placeOrder(patron, "beer,Dragon's Breath,5.91") }
     }
 
     menuList.forEachIndexed { index, data ->
@@ -99,18 +99,17 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     val (drinkType, drinkName, drinkPrice) = menuData.split(',')
 
+    println("$patronName buys a $drinkName ($drinkType) for $drinkPrice.")
+
     if (drinkType == "beer") {
-        numOfPintsLeft =- 1.00
+        numOfPintsLeft--
         pintsSold++
         if (pintsSold == 12) {
             println("12 pints sold, there's still ${numOfPintsLeft.roundToInt()} pints left to sell!")
         }
     }
 
-    val message = "$patronName buys a $drinkName ($drinkType) for $drinkPrice."
-    println(message)
-
-   // performPurchase(drinkPrice.toDouble())
+   performPurchase(drinkPrice.toDouble())
 
     val phrase = if (!purchaseFailed) {
         if (drinkName == "Dragon's Breath") {
