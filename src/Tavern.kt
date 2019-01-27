@@ -99,8 +99,12 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     println("$patronName buys a $drinkName ($drinkType) for $drinkPrice.")
 
+    performPurchase(drinkPrice.toDouble(), patronName)
+
     if (patronGold.getValue(patronName) < drinkPrice.toDouble()) {
-        println("Get outta here!")
+        println("Get outta here, $patronName!")
+        uniquePatrons.remove(patronName)
+        patronGold.remove(patronName)
     }
 
     if (drinkType == "beer") {
@@ -111,7 +115,6 @@ private fun placeOrder(patronName: String, menuData: String) {
         }
     }
 
-   performPurchase(drinkPrice.toDouble(), patronName)
 
     val phrase = if (drinkName == "Dragon's Breath") {
             "$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n"
@@ -121,9 +124,13 @@ private fun placeOrder(patronName: String, menuData: String) {
     println(phrase)
 }
 
-private  fun displayPatronBalances() {
+private fun displayPatronBalances() {
+    if ((patronGold.isEmpty() and uniquePatrons.isEmpty()) == false)  {
     patronGold.forEach { patron, balance ->
         println("$patron, balance: ${"%.2f".format(balance)}")
+        }
+    } else {
+        println("Everyone got kicked out!")
     }
 }
 private fun displayMenu() {
