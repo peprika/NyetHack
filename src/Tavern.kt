@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
 
     patronList.forEachIndexed { index, patron ->
         println("Good evening, $patron - you're #${index + 1} in line.")
-        repeat(3) { placeOrder(patron, "beer,Dragon's Breath,5.91") }
+        repeat(3) { placeOrder(patron, menuList.shuffled().last()) }
     }
 
     menuList.forEachIndexed { index, data ->
