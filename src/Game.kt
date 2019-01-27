@@ -5,7 +5,6 @@
 fun main(args: Array<String>) {
 
     // Declarations
-    val name = "Madrigal"
     var healthPoints = 89
     var isBlessed = true
     var isImmortal = false
@@ -22,7 +21,7 @@ fun main(args: Array<String>) {
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
     // Player status
-    printPlayerStatus(auraColor, isBlessed, name, healthStatus)
+    printPlayerStatus(auraColor, isBlessed, player.name, healthStatus)
 
 
 }
