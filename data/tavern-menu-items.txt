@@ -1,6 +1,6 @@
-shandy,Dragon's Breath,5.91
-beer,pint,2.50
-elixir,shirley temple,4.12
-meal,goblet of la croix,1.22
-desert dessert,pickled camel hump,7.33
+shandy,Dragons Breath,5.91,
+beer,pint,2.50,
+elixir,shirley temple,4.12,
+meal,goblet of la croix,1.22,
+desert dessert,pickled camel hump,7.33,
 elixir,iced boilermaker,11.22
