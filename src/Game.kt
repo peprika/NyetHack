@@ -4,23 +4,18 @@
 
 fun main(args: Array<String>) {
 
+    // Initialize player
     val player = Player()
 
     // Cast a fireball!
     player.castFireball()
 
-    // Aura
-    val auraColor = player.auraColor(player.isBlessed, player.healthPoints, player.isImmortal)
-
-    // Health status
-    val healthStatus = player.formatHealthStatus(player.healthPoints, player.isBlessed)
-
     // Player status
-    printPlayerStatus(auraColor, player.isBlessed, player.name, healthStatus)
+    printPlayerStatus(player)
 
 }
 
-private fun printPlayerStatus(auraColor: String, isBlessed: Boolean, name: String, healthStatus: String) {
-    println("(Aura: $auraColor) " + "(Blessed: ${if (isBlessed) "YES" else "NO"})")
-    println("$name $healthStatus")
+private fun printPlayerStatus(player: Player) {
+    println("(Aura: ${player.auraColor()}) " + "(Blessed: ${if (player.isBlessed) "YES" else "NO"})")
+    println("${player.name} ${player.formatHealthStatus()}")
 }
