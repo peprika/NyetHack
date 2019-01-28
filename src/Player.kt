@@ -1,3 +1,5 @@
+import java.io.File
+
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
@@ -8,6 +10,8 @@ class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean
         private set(value) {
             field = value.trim()
         }
+
+    val hometown = selectHomeTown()
 
     init {
         require(healthPoints > 0, { "healthPoints must be greater than zero" })
@@ -41,4 +45,10 @@ class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean
 
     fun castFireball(numFireballs: Int = 2) =
         println("A glass of Fireball springs into existence. (x$numFireballs)")
+
+    private fun selectHomeTown() = File("data/towns.txt")
+        .readText()
+        .split("\n")
+        .shuffled()
+        .first()
 }
