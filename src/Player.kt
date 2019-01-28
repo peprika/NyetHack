@@ -12,8 +12,9 @@ class Player (_name: String, var healthPoints: Int, val isBlessed: Boolean, priv
     constructor(name: String) : this(name,
         healthPoints = 100,
         isBlessed = true,
-        isImmortal = false
-    )
+        isImmortal = false) {
+        if (name.toLowerCase() == "kar") healthPoints = 40
+    }
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
@@ -30,7 +31,7 @@ class Player (_name: String, var healthPoints: Int, val isBlessed: Boolean, priv
             } else {
                 "has some minor wounds."
             }
-            in 15..74 -> "looks pretty hurt"
+            in 15..74 -> "looks pretty hurt."
             else -> "is in awful condition!"
      }
 

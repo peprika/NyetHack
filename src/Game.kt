@@ -5,13 +5,13 @@
 fun main(args: Array<String>) {
 
     // Initialize player
-    val player = Player("Madrigal")
+    val player = Player("Kar")
 
-    // Cast a fireball!
-    player.castFireball()
+// Cast a fireball!
+player.castFireball()
 
-    // Player status
-    printPlayerStatus(player)
+// Player status
+printPlayerStatus(player)
 
 }
 
