@@ -1,7 +1,7 @@
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
-class Player (_name: String, var healthPoints: Int, val isBlessed: Boolean, private val isImmortal: Boolean) {
+class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean, private val isImmortal: Boolean) {
     // Some declarations
     var name = _name
         get() = field.capitalize()
@@ -10,7 +10,6 @@ class Player (_name: String, var healthPoints: Int, val isBlessed: Boolean, priv
         }
 
     constructor(name: String) : this(name,
-        healthPoints = 100,
         isBlessed = true,
         isImmortal = false) {
         if (name.toLowerCase() == "kar") healthPoints = 40
