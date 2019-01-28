@@ -9,6 +9,11 @@ class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean
             field = value.trim()
         }
 
+    init {
+        require(healthPoints > 0, { "healthPoints must be greater than zero" })
+        require(name.isNotBlank(), { "Player must have a name." })
+    }
+
     constructor(name: String) : this(name,
         isBlessed = true,
         isImmortal = false) {
