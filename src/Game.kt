@@ -5,7 +5,7 @@
 fun main(args: Array<String>) {
 
     // Initialize player
-    val player = Player()
+    val player = Player("Madrigal",89, true, false)
 
     // Cast a fireball!
     player.castFireball()

@@ -1,17 +1,17 @@
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
-class Player {
+class Player (_name: String, _healthPoints: Int, _isBlessed: Boolean, _isImmortal: Boolean) {
     // Some declarations
-    var name = "madrigal"
+    var name = _name
         get() = field.capitalize()
         private set(value) {
             field = value.trim()
         }
 
-    var healthPoints = 89
-    var isBlessed = true
-    private var isImmortal = false
+    var healthPoints = _healthPoints
+    var isBlessed = _isBlessed
+    private var isImmortal = _isImmortal
 
     fun auraColor(): String {
         val auraVisible = isBlessed && healthPoints > 50 || isImmortal
