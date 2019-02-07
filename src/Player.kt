@@ -12,7 +12,7 @@ class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean
         }
 
     val hometown by lazy { selectHomeTown() }
-    val currentPosition = Coordinate(0, 0)
+    var currentPosition = Coordinate(0, 0)
 
     private fun selectHomeTown() = File("data/towns.txt")
         .readText()
