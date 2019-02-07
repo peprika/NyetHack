@@ -3,7 +3,10 @@ import java.io.File
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
-class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean, private val isImmortal: Boolean) {
+class Player (_name: String,
+              override var healthPoints: Int = 100,
+              val isBlessed: Boolean,
+              private val isImmortal: Boolean) : Fightable {
     // Some declarations
     var name = _name
         get() = "${field.capitalize()} of $hometown"
