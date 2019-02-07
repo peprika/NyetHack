@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
     player.castFireball()
 
     // Where are we?
-    val currentRoom = Room("Foyer")
+    val currentRoom = Room("Town Square")
     println(currentRoom.description())
     println(currentRoom.load())
 
