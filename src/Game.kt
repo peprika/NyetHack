@@ -1,4 +1,5 @@
 import java.lang.Exception
+import kotlin.system.exitProcess
 
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
@@ -56,6 +57,8 @@ object Game {
 
         fun processCommand() = when (command.toLowerCase()) {
             "move" -> move(argument)
+            "exit" -> exitGame()
+            "quit" -> exitGame()
             else -> commandNotFound()
         }
 
@@ -77,4 +80,9 @@ object Game {
         } catch (e: Exception) {
             "Invalid direction: $directionInput."
         }
+
+    private fun exitGame() {
+        println("Thank you for playing NyetHack!")
+        exitProcess(0)
+    }
 }
