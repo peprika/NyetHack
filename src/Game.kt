@@ -14,6 +14,11 @@ object Game {
     // Where are we?
     val currentRoom: Room = TownSquare()
 
+    private var worldMap = listOf(
+        listOf(currentRoom, Room("Tavern"), Room("Back Room")),
+        listOf(Room("Long Corridor"), Room("Generic Room"))
+    )
+
     // Initialization block
     init {
         println("Welcome, adventurer!")
