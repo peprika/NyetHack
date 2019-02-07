@@ -7,11 +7,16 @@ fun main(args: Array<String>) {
     // Initialize player
     val player = Player("Kar")
 
-// Cast a fireball!
-player.castFireball()
+    // Cast a fireball!
+    player.castFireball()
 
-// Player status
-printPlayerStatus(player)
+    // Where are we?
+    val currentRoom = Room("Foyer")
+    println(currentRoom.description())
+    println(currentRoom.load())
+
+    // Player status
+    printPlayerStatus(player)
 
 }
 
