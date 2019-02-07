@@ -11,7 +11,7 @@ class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean
             field = value.trim()
         }
 
-    val hometown = selectHomeTown()
+    val hometown by lazy { selectHomeTown() }
 
     private fun selectHomeTown() = File("data/towns.txt")
         .readText()
