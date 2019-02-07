@@ -73,7 +73,7 @@ object Game {
             val newRoom = worldMap[newPosition.y][newPosition.x]
             player.currentPosition = newPosition
             currentRoom = newRoom
-            "Ok, you ove $direction to the ${newRoom.name}.\n${newRoom.load()}"
+            "Ok, you move $direction to the ${newRoom.name}.\n${newRoom.load()}"
         } catch (e: Exception) {
             "Invalid direction: $directionInput."
         }
