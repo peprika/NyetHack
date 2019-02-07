@@ -57,6 +57,7 @@ object Game {
 
         fun processCommand() = when (command.toLowerCase()) {
             "move" -> move(argument)
+            "fight" -> fight()
             "exit" -> exitGame()
             "quit" -> exitGame()
             else -> commandNotFound()
