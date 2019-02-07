@@ -15,7 +15,7 @@ class Player (_name: String, var healthPoints: Int = 100, val isBlessed: Boolean
 
     private fun selectHomeTown() = File("data/towns.txt")
         .readText()
-        .split(",")
+        .lines()
         .shuffled()
         .first()
 
