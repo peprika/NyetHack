@@ -3,37 +3,39 @@
 
 
 fun main(args: Array<String>) {
-
-    // Initialize player
-    val player = Player("Kar")
-
-    // Cast a fireball!
-    player.castFireball()
-
-    // Where are we?
-    val currentRoom: Room = TownSquare()
-    println(currentRoom.description())
-    println(currentRoom.load())
-
-    // Player status
-    printPlayerStatus(player)
-
     Game.play()
 }
 
-private fun printPlayerStatus(player: Player) {
-    println("(Aura: ${player.auraColor()}) " + "(Blessed: ${if (player.isBlessed) "YES" else "NO"})")
-    println("${player.name} ${player.formatHealthStatus()}")
-}
 
 object Game {
+    // Initialize player
+    val player = Player("Kar")
+
+    // Where are we?
+    val currentRoom: Room = TownSquare()
+
+    // Initialization block
     init {
         println("Welcome, adventurer!")
+
+        // Cast a fireball!
+        player.castFireball()
     }
 
+    // Game play
     fun play() {
         while(true) {
-            // Play NyatHack
+            println(currentRoom.description())
+            println(currentRoom.load())
+
+            // Player status
+            printPlayerStatus(player)
         }
+    }
+
+    // Print player status
+    private fun printPlayerStatus(player: Player) {
+        println("(Aura: ${player.auraColor()}) " + "(Blessed: ${if (player.isBlessed) "YES" else "NO"})")
+        println("${player.name} ${player.formatHealthStatus()}")
     }
 }
