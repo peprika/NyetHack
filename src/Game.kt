@@ -58,6 +58,7 @@ object Game {
         fun processCommand() = when (command.toLowerCase()) {
             "move" -> move(argument)
             "fight" -> fight()
+            "map" -> map()
             "exit" -> exitGame()
             "quit" -> exitGame()
             else -> commandNotFound()
@@ -105,6 +106,27 @@ object Game {
             currentRoom.monster = null
         }
     }
+
+    private fun map(): String {
+        val notInRoom = "O "
+        val inRoom = "X "
+        var index = 0
+        var map = ""
+
+        while (index < worldMap.count()) {
+            worldMap[index].forEach {
+                if (it == currentRoom) {
+                    map += inRoom
+                } else {
+                    map += notInRoom
+                }
+            }
+            map += "\n"
+            index += 1
+        }
+        return map
+    }
+
     private fun exitGame() {
         println("Thank you for playing NyetHack!")
         exitProcess(0)
