@@ -1,6 +1,7 @@
 package com.bignerdranch.nyethack
 
 import java.io.File
+import com.bignerdranch.nyethack.extensions.random
 
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
@@ -36,8 +37,7 @@ class Player (_name: String,
     private fun selectHomeTown() = File("data/towns.txt")
         .readText()
         .lines()
-        .shuffled()
-        .first()
+        .random()
 
     init {
         require(healthPoints > 0, { "healthPoints must be greater than zero" })

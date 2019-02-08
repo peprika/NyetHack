@@ -6,6 +6,7 @@ package com.bignerdranch.nyethack
 import java.io.File
 import kotlin.math.roundToInt
 import kotlin.system.exitProcess
+import com.bignerdranch.nyethack.extensions.random
 
 // TAVERN INFO
 const val TAVERN_NAME = "Taernyl's Folly"
@@ -22,8 +23,6 @@ val menuList = File("data/tavern-menu-items.txt")
 val patronGold = mutableMapOf<String, Double>()
 
 var purchaseFailed = false
-
-private fun <T> Iterable<T>.random(): T = this.shuffled().first()
 
 // BEER CASK
 const val caskVolume = 5.00
