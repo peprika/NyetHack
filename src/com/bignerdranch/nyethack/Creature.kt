@@ -25,7 +25,7 @@ abstract class Monster(val name: String,
     }
 }
 
-class Goblin(name: String = "com.bignerdranch.nyethack.Goblin",
+class Goblin(name: String = "Goblin",
              description: String = "A nasty-looking goblin",
              healthPoints: Int = 30) : Monster(name, description, healthPoints) {
 

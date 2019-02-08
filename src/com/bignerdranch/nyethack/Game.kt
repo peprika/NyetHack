@@ -23,9 +23,9 @@ object Game {
         listOf(
             currentRoom,
             Room("Tavern"),
-            Room("Back com.bignerdranch.nyethack.Room")
+            Room("Back Room")
         ),
-        listOf(Room("Long Corridor"), Room("Generic com.bignerdranch.nyethack.Room"))
+        listOf(Room("Long Corridor"), Room("Generic Room"))
     )
 
     // Initialization block
@@ -36,13 +36,13 @@ object Game {
         player.castFireball()
     }
 
-    // com.bignerdranch.nyethack.Game play
+    // Game play
     fun play() {
         while(true) {
             println(currentRoom.description())
             println(currentRoom.load())
 
-            // com.bignerdranch.nyethack.Player status
+            // Player status
             printPlayerStatus(player)
 
             print("> Enter your command: ")

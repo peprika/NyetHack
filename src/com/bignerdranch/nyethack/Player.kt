@@ -41,7 +41,7 @@ class Player (_name: String,
 
     init {
         require(healthPoints > 0, { "healthPoints must be greater than zero" })
-        require(name.isNotBlank(), { "com.bignerdranch.nyethack.Player must have a name." })
+        require(name.isNotBlank(), { "Player must have a name." })
     }
 
     constructor(name: String) : this(name,
