@@ -124,7 +124,7 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     performPurchase(drinkPrice.toDouble(), patronName)
 
-    if ((drinkType == "beer") and (purchaseFailed == false)) {
+    if ((drinkType == "beer") and (!purchaseFailed)) {
         numOfPintsLeft--
         pintsSold++
         if (pintsSold == 12) {
@@ -132,7 +132,7 @@ private fun placeOrder(patronName: String, menuData: String) {
         }
     }
 
-    if (purchaseFailed == false) {
+    if (!purchaseFailed) {
         val phrase = if (drinkName == "Dragon's Breath") {
             println("$patronName exclaims: ${toDragonSpeak("Ah, delicious $drinkName!")}\n")
         } else {
