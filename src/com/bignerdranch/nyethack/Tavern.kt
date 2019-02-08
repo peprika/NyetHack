@@ -23,6 +23,8 @@ val patronGold = mutableMapOf<String, Double>()
 
 var purchaseFailed = false
 
+private fun <T> Iterable<T>.random(): T = this.shuffled().first()
+
 // BEER CASK
 const val caskVolume = 5.00
 const val pintVolume = 0.125
@@ -54,8 +56,8 @@ fun main(args: Array<String>) {
     patronList[0] = "Mr. Alex"
 
     (0..9).forEach {
-        val first = patronList.shuffled().first()
-        val last = lastName.shuffled().first()
+        val first = patronList.random()
+        val last = lastName.random()
         val name = "$first $last"
         uniquePatrons += name
     }
@@ -70,8 +72,8 @@ fun main(args: Array<String>) {
     while (orderCount <= 5) {
         try {
             placeOrder(
-                uniquePatrons.shuffled().first(),
-                menuList.shuffled().first()
+                uniquePatrons.random(),
+                menuList.random()
             )
             orderCount++
         } catch (e: NoSuchElementException) {
