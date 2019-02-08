@@ -152,7 +152,7 @@ private fun displayMenu() {
     menuList.forEachIndexed { index, data ->
         val (_, name, price) = data.split(',')
         val numberOfDots = welcomeMessage.length - name.length - price.length
-        println("[${index+1}] " + name.capitalize() + "".repeat(numberOfDots) + price)
+        println("[${index+1}] " + name.capitalize() + ".".repeat(numberOfDots) + price)
     }
     print("\n")
 }
