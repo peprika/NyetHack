@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 import java.util.Random
 
 interface Fightable {
@@ -23,7 +25,7 @@ abstract class Monster(val name: String,
     }
 }
 
-class Goblin(name: String = "Goblin",
+class Goblin(name: String = "com.bignerdranch.nyethack.Goblin",
              description: String = "A nasty-looking goblin",
              healthPoints: Int = 30) : Monster(name, description, healthPoints) {
 

@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 import java.lang.Exception
 import kotlin.system.exitProcess
 
@@ -18,8 +20,12 @@ object Game {
     var currentRoom: Room = TownSquare()
 
     private var worldMap = listOf(
-        listOf(currentRoom, Room("Tavern"), Room("Back Room")),
-        listOf(Room("Long Corridor"), Room("Generic Room"))
+        listOf(
+            currentRoom,
+            Room("Tavern"),
+            Room("Back com.bignerdranch.nyethack.Room")
+        ),
+        listOf(Room("Long Corridor"), Room("Generic com.bignerdranch.nyethack.Room"))
     )
 
     // Initialization block
@@ -30,13 +36,13 @@ object Game {
         player.castFireball()
     }
 
-    // Game play
+    // com.bignerdranch.nyethack.Game play
     fun play() {
         while(true) {
             println(currentRoom.description())
             println(currentRoom.load())
 
-            // Player status
+            // com.bignerdranch.nyethack.Player status
             printPlayerStatus(player)
 
             print("> Enter your command: ")

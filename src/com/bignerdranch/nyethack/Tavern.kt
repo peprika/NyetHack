@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
@@ -67,7 +69,10 @@ fun main(args: Array<String>) {
     var orderCount = 0
     while (orderCount <= 5) {
         try {
-            placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
+            placeOrder(
+                uniquePatrons.shuffled().first(),
+                menuList.shuffled().first()
+            )
             orderCount++
         } catch (e: NoSuchElementException) {
             println("Everyone got kicked out!")
@@ -147,7 +152,7 @@ private fun displayMenu() {
     menuList.forEachIndexed { index, data ->
         val (_, name, price) = data.split(',')
         val numberOfDots = welcomeMessage.length - name.length - price.length
-        println("[${index+1}] " + name.capitalize() + ".".repeat(numberOfDots) + price)
+        println("[${index+1}] " + name.capitalize() + "".repeat(numberOfDots) + price)
     }
     print("\n")
 }

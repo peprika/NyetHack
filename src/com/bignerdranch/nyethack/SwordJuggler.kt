@@ -1,3 +1,5 @@
+package com.bignerdranch.nyethack
+
 // Riku Pepponen
 // Thanks to the Big Nerd Ranch!
 
@@ -23,4 +25,4 @@ fun proficiencyCheck(swordsJuggling: Int?) {
 }
 
 class UnskilledSwordJugglerExpcetion() :
-        IllegalStateException("Player cannot juggle swords")
+        IllegalStateException("com.bignerdranch.nyethack.Player cannot juggle swords")
